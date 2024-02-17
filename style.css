@@ -1,0 +1,96 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+html{
+    overflow: hidden;
+}
+
+body{
+   overflow: hidden;
+   height: 100px;
+   width: 100%;
+   min-width: 100vw;
+   min-height: 100vh;
+   background-color: black;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+a{
+    height: 100%;
+    width: auto;
+    text-decoration: none;
+}
+
+#peace{
+    position:fixed;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    overflow: hidden;
+    opacity: 20%;
+    z-index: 12;
+    pointer-events: none;
+}
+
+#topRightCorner{
+    position: absolute;
+    display: flex;
+    justify-content: flex-start;
+    height: 10vh;
+    width: 100vw;
+    margin: 0vw;
+    top: 0;
+    left: 0;
+}
+
+#LeftCorner{
+    position: sticky;
+    display: flex;
+    justify-content: space-between;
+    height: 5vh;
+    width: 15em;
+    top: 0;
+    left: 95%;
+}
+
+.iconSizing{
+    margin: 2em;
+    height: 100%;
+}
+
+.iconSizing2{
+    margin: 0.5em;
+    height: 100%;
+}
+
+#videoDock{
+    position: absolute;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    top: 30em;
+    height: 22vh;
+    width: 80vw;
+}
+
+.videoSizing{
+    height: 100%;
+    width: auto;
+    pointer-events: none;
+}
+
+/*@media (aspect-ratio: 1/1){
+    #videoDock{
+        top:12em;
+    }
+} complete later*/
