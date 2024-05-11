@@ -22,9 +22,19 @@ body{
 }
 
 a{
-    height: 100%;
-    width: auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    object-fit: contain;
     text-decoration: none;
+}
+
+#background{
+    position:absolute;
+    right: 0;
+    top:0;
+    height: 100vh;
+    min-width:100%;
 }
 
 #peace{
@@ -42,55 +52,23 @@ a{
     pointer-events: none;
 }
 
-#topRightCorner{
-    position: absolute;
-    display: flex;
-    justify-content: flex-start;
-    height: 10vh;
-    width: 100vw;
-    margin: 0vw;
-    top: 0;
-    left: 0;
-}
-
-#LeftCorner{
-    position: sticky;
-    display: flex;
-    justify-content: space-between;
-    height: 5vh;
-    width: 15em;
-    top: 0;
-    left: 95%;
-}
-
-.iconSizing{
-    margin: 2em;
-    height: 100%;
-}
-
-.iconSizing2{
-    margin: 0.5em;
-    height: 100%;
-}
-
 #videoDock{
     position: absolute;
     display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    top: 30em;
-    height: 22vh;
-    width: 80vw;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    top: 33%;
+    right: 2%;
+    height: 15vh;
+    width: 500px;
 }
-
-.videoSizing{
-    height: 100%;
-    width: auto;
-    pointer-events: none;
+.animIcon{
+    object-fit: contain;
 }
 
 /*@media (aspect-ratio: 1/1){
     #videoDock{
         top:12em;
+        min-width: 60vw;
     }
 } complete later*/
