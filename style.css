@@ -69,7 +69,7 @@ a{
     object-fit: contain;
 }
 
-@media (max-aspect-ratio: 9/16){
+@media (max-device-aspect-ratio: 9/16){
     #videoDock{
         left: 0;
         right: auto;
