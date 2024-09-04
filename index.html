@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="saetyrn">
     <title>OPERA</title>
-    
+    <script src="/jquery-3.7.1.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Sitka+Subheading:wght@600&display=swap');
         body {
@@ -67,6 +68,10 @@
 </head>
 <body>
     <div class="film-grain"></div>
+    <div id="splashscreen">
+        <img onclick="starter()" id="play" src="/play.png" alt="play">
+    </div>
+    <audio id="shine" hidden loop src="/GOGOGO - Copy.mp3"></audio>
     <script>
         const letters = ['O', 'P', 'E', 'R', 'A'];
 
@@ -124,5 +129,7 @@
             animate();
         });
     </script>
+    <script src="shine.js"></script>
+    <script src="splashscreen.js"></script>
 </body>
 </html>

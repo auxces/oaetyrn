@@ -1,0 +1,20 @@
+#splashscreen{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left:0;
+    width:  100vw;
+    height: 100vh;
+    z-index: 10;
+    -webkit-backdrop-filter: blur(6px) brightness(80%);
+    backdrop-filter: blur(6px) brightness(80%);
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+#play{
+    height: 10vh;
+    width: auto;
+}
