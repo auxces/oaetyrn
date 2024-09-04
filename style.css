@@ -17,4 +17,5 @@
 #play{
     height: 10vh;
     width: auto;
+    filter: brightness(0) saturate(100%) invert(99%) sepia(4%) saturate(1948%) hue-rotate(252deg) brightness(118%) contrast(101%);
 }
