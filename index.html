@@ -4,18 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="saetyrn">
-    <title>OPERA</title>
     <script src="/jquery-3.7.1.min.js"></script>
     <link rel="stylesheet" href="style.css" />
+    <title>Floating Opera & Movie Reviews</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Sitka+Subheading:wght@600&display=swap');
+
+        /* Styles for the Home Page (Floating Opera) */
         body {
             margin: 0;
             padding: 0;
             background-color: white;
-            overflow: hidden;
-            perspective: 1000px;
+            overflow-x: hidden;
+            font-family: Arial, sans-serif;
+            
         }
+
+         #home-page {
+            display: block;
+             overflow: hidden;
+            width: 100vw;
+            height: 100vh;
+              position: relative;
+          }
+
         .letter {
             position: absolute;
             font-size: 96px;
@@ -27,12 +39,13 @@
             transition: color 0.3s, animation-duration 0.3s;
             text-decoration: none;
         }
-        .letter:hover {
+         .letter:hover {
             color: black !important;
             animation-duration: 20s !important;
         }
+
         @keyframes rainbow {
-            0% { color: rgba(255, 0, 0, 0.7); }
+             0% { color: rgba(255, 0, 0, 0.7); }
             16.666% { color: rgba(255, 165, 0, 0.7); }
             33.333% { color: rgba(255, 255, 0, 0.7); }
             50% { color: rgba(0, 128, 0, 0.7); }
@@ -40,6 +53,8 @@
             83.333% { color: rgba(75, 0, 130, 0.7); }
             100% { color: rgba(238, 130, 238, 0.7); }
         }
+
+
         .film-grain {
             position: fixed;
             top: 0;
@@ -52,7 +67,8 @@
             background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjc1IiBzdGl0Y2hUaWxlcz0ic3RpdGNoIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIiBmaWx0ZXI9InVybCgjYSkiIG9wYWNpdHk9IjAuMDUiLz48L3N2Zz4=');
             animation: grain 0.2s steps(10) infinite;
         }
-        @keyframes grain {
+
+         @keyframes grain {
             0%, 100% { transform: translate(0, 0); }
             10% { transform: translate(-5%, -5%); }
             20% { transform: translate(-10%, 5%); }
@@ -64,15 +80,170 @@
             80% { transform: translate(-15%, 0); }
             90% { transform: translate(10%, 5%); }
         }
+
+        /* Styles for Movie Review Page */
+        #review-page {
+            display: none; /* Initially hidden */
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 20px;
+             min-height: 100vh; /* Ensure the page takes up at least the full viewport height */
+               box-sizing: border-box;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+          .review-button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+         .review-button:hover {
+            background-color: #0056b3;
+        }
+
+          .review-form {
+            display: none;
+            flex-direction: column;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+         .review-form input, .review-form textarea {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+          .review-form input[type="file"] {
+            padding: 5px;
+        }
+
+         .review-form button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+          .review-form button:hover {
+            background-color: #218838;
+        }
+
+         .reviews-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            width: 100%;
+              padding-bottom: 30px;
+        }
+
+         .review {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+          .review img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        #navigation {
+             position: fixed;
+             left: 0;
+             right: 0;
+            bottom: 20px;
+           margin: 0 auto;
+            z-index: 1001; /* Ensure navigation is above grain */
+             display: flex;
+              justify-content: center; /* Center the buttons horizontally */
+            gap: 10px;
+            width: fit-content;
+         }
+
+        #navigation button {
+              background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+             transition: background-color 0.3s ease;
+        }
+         #navigation button:hover {
+              background-color: #0056b3;
+        }
+
+
     </style>
 </head>
 <body>
-    <div class="film-grain"></div>
     <div id="splashscreen">
         <img onclick="starter()" id="play" src="/play.png" alt="play">
     </div>
     <audio id="shine" hidden loop src="/GOGOGO - Copy.mp3"></audio>
+  <div id="home-page">
+       <div class="film-grain"></div>
+    </div>
+
+    <div id="review-page">
+          <header>
+            <h1>Movie Reviews</h1>
+             <button class="review-button" onclick="toggleReviewForm()">Add a Review</button>
+        </header>
+
+        <div class="review-form" id="reviewForm">
+            <input type="password" id="password" placeholder="Enter password">
+            <input type="text" id="title" placeholder="Movie Title">
+            <textarea id="description" placeholder="Short Description"></textarea>
+            <input type="file" id="image">
+            <button onclick="addReview()">Submit</button>
+        </div>
+
+        <div class="reviews-container" id="reviewsContainer">
+             <!-- Reviews will be added here dynamically -->
+        </div>
+
+    </div>
+     <div id="navigation">
+            <button onclick="showHomePage()">Home</button>
+            <button onclick="showReviewPage()">Reviews</button>
+    </div>
     <script>
+       // Functions to show/hide pages
+      function showHomePage() {
+            document.getElementById('home-page').style.display = 'block';
+            document.getElementById('review-page').style.display = 'none';
+            document.body.style.overflowY = 'hidden';// Keep the home page from scrolling
+        }
+
+      function showReviewPage() {
+            document.getElementById('home-page').style.display = 'none';
+            document.getElementById('review-page').style.display = 'flex';
+            document.body.style.overflowY = 'auto'; // Allow scrolling on the review page
+        }
+      // script for opera page
         const letters = ['O', 'P', 'E', 'R', 'A'];
 
         letters.forEach((letter, index) => {
@@ -81,17 +252,17 @@
             elem.textContent = letter;
             elem.href = 'https://x.com/saetyrn';
             elem.target = '_blank';
-            elem.style.animationDelay = `-${index * 1}s`;
-            document.body.appendChild(elem);
+             elem.style.animationDelay = `-${index * 1}s`;
+            document.getElementById('home-page').appendChild(elem);
 
             const originalSpeed = 0.5 + Math.random() * 2;
             let currentSpeed = originalSpeed;
             const angle = Math.random() * Math.PI * 2;
             let x = Math.random() * window.innerWidth;
             let y = Math.random() * window.innerHeight;
-            let rotateX = Math.random() * 360;
-            let rotateY = Math.random() * 360;
-            let rotateZ = Math.random() * 360;
+             let rotateX = Math.random() * 360;
+             let rotateY = Math.random() * 360;
+             let rotateZ = Math.random() * 360;
 
             elem.addEventListener('mouseenter', () => {
                 currentSpeed = originalSpeed / 4;
@@ -107,7 +278,7 @@
 
                 if (x < 0) x = window.innerWidth;
                 if (x > window.innerWidth) x = 0;
-                if (y < 0) y = window.innerHeight;
+                 if (y < 0) y = window.innerHeight;
                 if (y > window.innerHeight) y = 0;
 
                 rotateX += 0.5;
@@ -116,7 +287,7 @@
 
                 elem.style.left = `${x}px`;
                 elem.style.top = `${y}px`;
-                elem.style.transform = `
+                 elem.style.transform = `
                     rotateX(${rotateX}deg)
                     rotateY(${rotateY}deg)
                     rotateZ(${rotateZ}deg)
@@ -128,6 +299,60 @@
 
             animate();
         });
+
+         // script for review page
+        function toggleReviewForm() {
+             const form = document.getElementById('reviewForm');
+            form.style.display = form.style.display === 'none' || form.style.display === '' ? 'flex' : 'none';
+        }
+
+        function addReview() {
+            const password = document.getElementById('password').value;
+             if (password !== 'saetyrnisthebest') {
+                alert('Incorrect password!');
+                return;
+            }
+
+            const title = document.getElementById('title').value;
+            const description = document.getElementById('description').value;
+            const imageInput = document.getElementById('image');
+
+            if (!title || !description || !imageInput.files.length) {
+                alert('Please fill in all fields.');
+                 return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const reviewsContainer = document.getElementById('reviewsContainer');
+
+                const reviewDiv = document.createElement('div');
+                reviewDiv.className = 'review';
+
+                const img = document.createElement('img');
+                img.src = event.target.result;
+                reviewDiv.appendChild(img);
+
+                 const reviewTitle = document.createElement('h3');
+                reviewTitle.textContent = title;
+                reviewDiv.appendChild(reviewTitle);
+
+               const reviewDesc = document.createElement('p');
+                reviewDesc.textContent = description;
+                reviewDiv.appendChild(reviewDesc);
+
+               reviewsContainer.appendChild(reviewDiv);
+
+                // Reset form
+                document.getElementById('password').value = '';
+                document.getElementById('title').value = '';
+                document.getElementById('description').value = '';
+                document.getElementById('image').value = '';
+                toggleReviewForm();
+            };
+            reader.readAsDataURL(imageInput.files[0]);
+        }
+     showHomePage(); // Show the home page initially
     </script>
     <script src="shine.js"></script>
     <script src="splashscreen.js"></script>
